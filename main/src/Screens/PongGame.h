@@ -4,8 +4,9 @@
 #include "../LV_Interface/LVScreen.h"
 #include "../Devices/IMU.h"
 #include "../Services/ChirpSystem.h"
-#include "Util/Events.h"
-#include "Util/EMA.h"
+#include "../Util/Events.h"
+#include "../Util/EMA.h"
+#include "../Util/Threaded.h"
 #include <atomic>
 
 class PongGame : public LVScreen {
