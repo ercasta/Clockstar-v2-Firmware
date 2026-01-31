@@ -38,6 +38,7 @@ PongGame::PongGame()
 	ball = lv_obj_create(bg);
 	lv_obj_set_size(ball, BALL_SIZE, BALL_SIZE);
 	lv_obj_set_style_bg_color(ball, lv_color_white(), 0);
+	lv_obj_set_style_bg_opa(ball, LV_OPA_COVER, 0);
 	lv_obj_set_style_border_width(ball, 0, 0);
 	lv_obj_set_style_radius(ball, BALL_SIZE / 2, 0);
 
@@ -45,6 +46,7 @@ PongGame::PongGame()
 	paddle = lv_obj_create(bg);
 	lv_obj_set_size(paddle, PADDLE_WIDTH, PADDLE_HEIGHT);
 	lv_obj_set_style_bg_color(paddle, lv_color_white(), 0);
+	lv_obj_set_style_bg_opa(paddle, LV_OPA_COVER, 0);
 	lv_obj_set_style_border_width(paddle, 0, 0);
 
 	// Initialize game state
