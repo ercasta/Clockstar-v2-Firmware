@@ -9,8 +9,8 @@
 #include <algorithm>
 
 PongGame::PongGame() 
-	: pitchFilter(filterStrength),
-	  gameThread([this](){ gameLoop(); }, "Pong", 4096, 5, 1),
+	: gameThread([this](){ gameLoop(); }, "Pong", 4096, 5, 1),
+	  pitchFilter(filterStrength),
 	  queue(4),
 	  score(0),
 	  gameOver(false),
