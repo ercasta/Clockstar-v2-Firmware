@@ -7,14 +7,15 @@
 #include "Util/stdafx.h"
 #include <cmath>
 #include <algorithm>
+#include <esp_random.h>
 
 PongGame::PongGame() 
-	: gameThread([this](){ gameLoop(); }, "Pong", 4096, 5, 1),
-	  pitchFilter(filterStrength),
-	  queue(4),
+	: paddleY(0.5f),
 	  score(0),
 	  gameOver(false),
-	  paddleY(0.5f)
+	  gameThread([this](){ gameLoop(); }, "Pong", 4096, 5, 1),
+	  pitchFilter(filterStrength),
+	  queue(4)
 {
 	// Get services
 	imu = (IMU*) Services.get(Service::IMU);
@@ -219,10 +220,12 @@ void PongGame::handleInput() {
 }
 
 void PongGame::playHitSound() {
-	audio->play(Chirp{ 
-		.startFreq = NOTE_C5, 
-		.endFreq = NOTE_C5, 
-		.duration = 50 
+	audio->play({
+		Chirp{ 
+			.startFreq = NOTE_C5, 
+			.endFreq = NOTE_C5, 
+			.duration = 50 
+		}
 	});
 }
 
