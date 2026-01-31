@@ -192,10 +192,10 @@ void MainMenu::handleInput(Input::Data& event){
 }
 
 void MainMenu::setConnAlts(){
-	auto connEl = (MenuItemAlt*) items[4];
+	auto connEl = (MenuItemAlt*) items[ConnectionItemIndex];
 
 	const auto connAlt = phone.getPhoneType() == Phone::PhoneType::None
-						 ? ItemInfos[4].iconAltPath : ItemInfos[4].iconPath;
+						 ? ItemInfos[ConnectionItemIndex].iconAltPath : ItemInfos[ConnectionItemIndex].iconPath;
 	connEl->setAltParams(connAlt, ConnDesc[(int) phone.getPhoneType()]);
 }
 
