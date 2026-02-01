@@ -35,11 +35,12 @@ private:
 			{ "S:/menu/labels/level.bin",      nullptr,                                "S:/menu/level",        nullptr },
 			{ "S:/menu/labels/theremin.bin",   nullptr,                                "S:/menu/theremin",     nullptr },
 			{ "S:/menu/labels/pong.bin",       nullptr,                                "S:/menu/pong",         nullptr },
+			{ "S:/menu/labels/level.bin",      nullptr,                                "S:/menu/level",        nullptr },
 			{ "S:/menu/labels/connection.bin", ConnDesc[(int) Phone::PhoneType::None], "S:/menu/disconnected", "S:/menu/connected" },
 			{ "S:/menu/labels/settings.bin",   nullptr,                                "S:/menu/settings",     nullptr },
 	};
 	static constexpr uint8_t ItemCount = sizeof(ItemInfos) / sizeof(ItemInfos[0]);
-	static constexpr uint8_t ConnectionItemIndex = 4;
+	static constexpr uint8_t ConnectionItemIndex = 5;
 
 	void setConnAlts();
 
