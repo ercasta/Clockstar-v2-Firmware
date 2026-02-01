@@ -12,6 +12,7 @@
 BirdDodger::BirdDodger() 
 	: planeX(0.5f),
 	  score(0),
+	  lastDifficultyScore(0),
 	  gameOver(false),
 	  scrollSpeed(INITIAL_SPEED),
 	  frameCounter(0),
@@ -151,9 +152,12 @@ void BirdDodger::updateGame() {
 	planeX += (targetX - planeX) * PLANE_SPEED;
 	planeX = std::clamp(planeX, 0.0f, 1.0f);
 
-	// Gradually increase difficulty
+	// Gradually increase difficulty every 10 points
 	if(score > 0 && score % 10 == 0 && scrollSpeed < MAX_SPEED) {
-		scrollSpeed += SPEED_INCREMENT * 0.01f;  // Very gradual increase
+		if(score != lastDifficultyScore) {
+			scrollSpeed = std::min(scrollSpeed + SPEED_INCREMENT, MAX_SPEED);
+			lastDifficultyScore = score;
+		}
 	}
 }
 
@@ -236,6 +240,7 @@ void BirdDodger::handleInput() {
 				} else if(data->btn == Input::Button::Select && gameOver) {
 					// Restart game
 					score = 0;
+					lastDifficultyScore = 0;
 					gameOver = false;
 					scrollSpeed = INITIAL_SPEED;
 					frameCounter = 0;
@@ -249,16 +254,6 @@ void BirdDodger::handleInput() {
 			}
 		}
 	}
-}
-
-void BirdDodger::playHitSound() {
-	audio->play({
-		Chirp{ 
-			.startFreq = NOTE_C5, 
-			.endFreq = NOTE_C5, 
-			.duration = 50 
-		}
-	});
 }
 
 void BirdDodger::playMissSound() {

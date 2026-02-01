@@ -35,6 +35,7 @@ private:
 	float planeX;             // Plane position (0-1)
 	Bird birdState[MAX_BIRDS];
 	int score;
+	int lastDifficultyScore;  // Track last score when difficulty increased
 	bool gameOver;
 	float scrollSpeed;
 
@@ -69,7 +70,6 @@ private:
 	void checkCollisions();
 	void spawnBird();
 	void updateUI();
-	void playHitSound();
 	void playMissSound();
 
 	// Input
