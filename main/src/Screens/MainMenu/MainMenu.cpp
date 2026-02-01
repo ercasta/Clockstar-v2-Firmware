@@ -5,6 +5,7 @@
 #include "Screens/Level.h"
 #include "Screens/Theremin/Theremin.h"
 #include "Screens/PongGame.h"
+#include "Screens/BirdDodger.h"
 #include "Screens/Settings/SettingsScreen.h"
 #include "Util/stdafx.h"
 #include "LV_Interface/InputLVGL.h"
@@ -153,6 +154,7 @@ void MainMenu::onClick(){
 			[this](){ transition([](){ return std::make_unique<Level>(); }); },
 			[this](){ transition([](){ return std::make_unique<Theremin>(); }); },
 			[this](){ transition([](){ return std::make_unique<PongGame>(); }); },
+			[this](){ transition([](){ return std::make_unique<BirdDodger>(); }); },
 			[](){ },
 			[this](){ transition([](){ return std::make_unique<SettingsScreen>(); }); }
 	};
