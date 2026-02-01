@@ -145,8 +145,8 @@ void BirdDodger::updateGame() {
 	IMU::Sample sample = imu->getSample();
 	float roll = rollFilter.update(sample.accelX);
 	
-	// Map roll to plane position (-0.3g to 0.3g → 0 to 1)
-	float targetX = std::clamp((roll + 0.3f) / 0.6f, 0.0f, 1.0f);
+	// Map roll to plane position (ROLL_RANGE_MIN to ROLL_RANGE_MAX → 0 to 1)
+	float targetX = std::clamp((roll - ROLL_RANGE_MIN) / ROLL_RANGE_TOTAL, 0.0f, 1.0f);
 	
 	// Smooth plane movement
 	planeX += (targetX - planeX) * PLANE_SPEED;
@@ -198,7 +198,7 @@ void BirdDodger::updateUI() {
 	}
 
 	// Update score
-	char buf[32];
+	char buf[SCORE_BUFFER_SIZE];
 	if(gameOver) {
 		snprintf(buf, sizeof(buf), "Score: %d\nGame Over!", score);
 	} else {

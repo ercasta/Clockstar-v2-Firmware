@@ -50,6 +50,10 @@ private:
 	static constexpr float MAX_SPEED = 3.0f;
 	static constexpr float PLANE_SPEED = 0.03f;
 	static constexpr int SPAWN_INTERVAL = 60;  // Frames between spawns
+	static constexpr float ROLL_RANGE_MIN = -0.3f;  // Min roll in g
+	static constexpr float ROLL_RANGE_MAX = 0.3f;   // Max roll in g
+	static constexpr float ROLL_RANGE_TOTAL = 0.6f; // Total roll range
+	static constexpr int SCORE_BUFFER_SIZE = 32;    // Buffer for score text
 
 	// Game Thread
 	ThreadedClosure gameThread;
